@@ -15,8 +15,7 @@ const Stats = new Schema({
     unique: true,
     required: true
   },
-{ timestamps: true })
+}, { timestamps: true })
 
-Stats.plugin(require('passport-local-mongoose'))
 
 module.exports = model('Stats', Stats)

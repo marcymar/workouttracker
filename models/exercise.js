@@ -13,6 +13,5 @@ const Exercise = new Schema({
 
 }, { timestamps: true })
 
-Exercise.plugin(require('passport-local-mongoose'))
 
 module.exports = model('Exercise', Exercise)
