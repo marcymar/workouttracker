@@ -1,10 +1,9 @@
 const router = require('express').Router()
-const  { Exercise, Stats } = require('../models')
+const  { Exercise } = require('../models')
 
 // get
 router.get('./exercises', (req, res) => {
   Exercise.find()
-    .populate('stats')
     .then(exercises => res.json(exercises))
     .catch(err => console.log(err))
 })
@@ -18,8 +17,8 @@ router.post('/exercises', (req, res) => {
 
 //put 
 router.put('/exercises/:id', (req, res) => {
-  Exercise.findByIdAndUpdate(req.params.id, req.body)
-    .then(() => res.sendStatus(200))
+  Exercise.findByIdAndUpdate(req.params.id, { $push: { exercises: req.body }})
+    .then((exercise) => res.json(exercise))
     .catch(err => console.log(err))
 })
 
@@ -29,3 +28,5 @@ router.delete('/exercises/:id', (req, res) => {
     .then(() => res.sendStatus(200))
     .catch(err => console.log(err))
 })
+
+module.exports = router
