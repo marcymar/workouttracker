@@ -1,6 +1,6 @@
 const { model, Schema } = require('mongoose')
 
-const Exercise = new Schema({
+const Workout = new Schema({
   day: {
     type: Date,
     default: Date.now
@@ -47,4 +47,4 @@ const Exercise = new Schema({
 }, { timestamps: true })
 
 
-module.exports = model('Exercise', Exercise)
+module.exports = model('Workout', Workout)
